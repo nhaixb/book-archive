@@ -3,8 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>Music Recommendation - MY Book Archive </title>
-  <link rel="stylesheet" href="cssstyle.css">
+  <link rel="stylesheet" href="방지안.css">
 </head>
+
+<script>
+  function filterMusic(tag) {
+    const cards = document.querySelectorAll('.music-card');
+
+    cards.forEach(card => {
+      const tags = card.getAttribute('data-tags');
+      if (tag === 'all' || tags.includes(tag)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
+
 <body>
   <header>
     <h1>📚 MY Book Archive</h1>
@@ -12,9 +28,9 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="books.html">Book Lists</a></li>
-        <li><a href="tags.html">Emotion tags</a></li>
-        <li><a href="about.html">Introduction</a></li>
+        <li><a href="tags.html">Emotion Tags</a></li>
         <li><a href="music.html">Music Recommendation</a></li>
+        <li><a href="about.html">Introduction</a></li>
       </ul>
     </nav>
   </header>
@@ -23,29 +39,84 @@
     <section class="music-recs">
       <h2>🎧 책과 어울리는 음악 추천</h2>
 
-      <div class="music-card">
-        <h3>환승인간 × 백예린 - "그건 아마 우리의 잘못은 아닐 거야"</h3>
-        <p>
-          정말 재미있게 읽은 저와 다르게 한정현 작가님의 문체를 따라가기 어렵다는 사람들이 많았던 것 같습니다. 그러나 작가님의 때로는 혼란스럽고 때로는 울고 웃었던 파란만장한 인생 스토리를 담은 책이기에 그럴 수 밖에 없다고 생각합니다. 
-          백예린님의 벅차면서도 담담한 목소리로 우리의 인생에 잘못은 없다고 말해주는 노래를 곁들여 읽으면 더욱 몰입할 수 있을 것 같습니다.
-        </p>
-        <a href="https://www.youtube.com/watch?v=example" target="_blank">🎵 유튜브로 듣기</a>
+      <div class="filter-buttons">
+      <button onclick="filterMusic('all')">전체 보기</button>
+      <button onclick="filterMusic('따뜻한')">#따뜻한</button>
+      <button onclick="filterMusic('몽글몽글')">#몽글몽글</button>
+      <button onclick="filterMusic('사랑')">#사랑</button>
+      <button onclick="filterMusic('위로')">#위로</button>
+      <button onclick="filterMusic('자유')">#자유</button>
+      <button onclick="filterMusic('잔잔한')">#잔잔한</button>
+      <button onclick="filterMusic('희망')">#희망</button>
       </div>
 
-      <div class="music-card">
-        <h3>쇼코의 미소 × 검정치마 - "Everything"</h3>
-        <p>
-          이야기 속 인물들이 가진 쓸쓸함과 그리움을 잘 어울리는 곡이에요.
-        </p>
-        <a href="https://www.youtube.com/watch?v=example2" target="_blank">🎵 유튜브로 듣기</a>
+      <div class="music-card" data-tags="위로 따뜻한 잔잔한">
+        <h3>🎵 <a href="https://www.youtube.com/watch?v=abc123" target="_blank">김윤아 - 봄날은 간다</a></h3>
+        <p>🏷️ #위로 #따뜻한 #잔잔한</p>
+      </div>
+
+      <div class="music-card" data-tags="위로 따뜻한 잔잔한">
+        <h3>🎵 <a href="https://youtu.be/Z8E0apklL2w?si=8WMMZrv6_lHPNPBL" target="_blank">백예린 - 그건 아마 우리의 잘못은 아닐거야</a></h3>
+        <p>🏷️ #위로 #따뜻한 #잔잔한</p>
+      </div>
+
+      <div class="music-card" data-tags="위로 따뜻한 잔잔한">
+        <h3>🎵 <a href="https://youtu.be/wyN27QpglGE?si=iBWt_iDqUBO7Z4MW" target="_blank">선우정아 - 도망가자</a></h3>
+        <p>🏷️ #위로 #따뜻한 #잔잔한</p>
+      </div>
+
+      <div class="music-card" data-tags="따뜻한 희망 자유">
+        <h3>🎵 <a href="https://youtu.be/xgvckGs6xhU?si=q3kw_4xtbiZdbyXt" target="_blank">김동률 - 출발 </a></h3>
+        <p>🏷️ #따뜻한 #희망 #자유</p>
+      </div>
+
+      <div class="music-card" data-tags="위로 따뜻한 잔잔한 희망">
+        <h3>🎵 <a href="https://youtu.be/zVuAKAlS8O4?si=z0Rzh5TNtAmWTRo-" target="_blank">하현상 - 등대</a></h3>
+        <p>🏷️ #위로 #따뜻한 #잔잔한 #희망</p>
+      </div>
+
+      <div class="music-card" data-tags="따뜻한 희망 사랑 몽글몽글">
+        <h3>🎵 <a href="https://youtu.be/GWp8KMYZzY0?si=CogPJLrSCfGvVwOH" target="_blank">정승환 - 에필로그</a></h3>
+        <p>🏷️ #따뜻한 #희망 #사랑 #몽글몽글</p>
+      </div>
+
+      <div class="music-card" data-tags="잔잔한 사랑">
+        <h3>🎵 <a href="https://youtu.be/VpgoESGMHSI?si=GQayb2fNj-YK2rW1" target="_blank">변진섭 - 숙녀에게</a></h3>
+        <p>🏷️ #잔잔한 #사랑</p>
+      </div>
+
+      <div class="music-card" data-tags="따뜻한 잔잔한 사랑 몽글몽글">
+        <h3>🎵 <a href="https://youtu.be/gNP-IqAn1wU?si=cLp7KvsPQAGvqhmU" target="_blank">10cm - 서랍</a></h3>
+        <p>🏷️ #따뜻한 #잔잔한 #사랑 #몽글몽글</p>
+      </div>
+
+      <div class="music-card" data-tags="위로 성찰 자유">
+        <h3>🎵 <a href="https://youtu.be/U0Lljwv8djo?si=S6PFDkYeHgIPpdBh" target="_blank">YB - 나는 나비</a></h3>
+        <p>🏷️ #위로 #성찰 #자유</p>
+      </div>
+
+      <div class="music-card" data-tags="따뜻한 자유 희망">
+        <h3>🎵 <a href="https://youtu.be/3kGAlp_PNUg?si=J4vXTXaQqvShoGv1" target="_blank">AKMU - 후라이의 꿈</a></h3>
+        <p>🏷️ #따뜻한 #자유 #희망</p>
+      </div>
+
+      <div class="music-card" data-tags="위로 희망 성찰 자유">
+        <h3>🎵 <a href="https://youtu.be/XV0lSvr0huU?si=hAdTk6E4xYcdN7IJ" target="_blank">재쓰비 - 너와의 모든 지금</a></h3>
+        <p>🏷️ #의로 #희망 #성찰 #자유</p>
+      </div>
+
+      <div class="music-card" data-tags="따뜻한 잔잔한 성찰 자유">
+        <h3>🎵 <a href="https://youtu.be/lHW1h9hES7A?si=GiYaQlr_vXnz0dLN" target="_blank">옥상달빛 - 달리기</a></h3>
+        <p>🏷️ #따뜻한 #잔잔한 #성찰 #자유</p>
       </div>
 
       <!-- 추가 음악 추천 카드 -->
     </section>
   </main>
-
   <footer>
-    <p>&copy; 2025 MY Book Archive </p>
+  <p>&copy; 2025 MY Book Archive </p>
   </footer>
+
+<script src="방지안.js" defer></script>
 </body>
 </html>
