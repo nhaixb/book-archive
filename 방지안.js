@@ -90,3 +90,42 @@ function displayMusic(list) {
     container.appendChild(div);
   });
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  const searchInput = document.getElementById('search-input');
+  const bookCards = document.querySelectorAll('.book-card');
+
+  searchInput.addEventListener('input', function () {
+    const keyword = searchInput.value.toLowerCase();
+
+    bookCards.forEach(card => {
+      const info = card.querySelector('.book-info');
+      const text = info ? info.textContent.toLowerCase() : '';
+      
+      if (text.includes(keyword)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
+const searchInput = document.getElementById('search-input');
+const bookCards = document.querySelectorAll('.book-card');
+const noResults = document.getElementById('noResults');
+
+searchInput.addEventListener('input', function () {
+  const searchTerm = searchInput.value.toLowerCase();
+  let anyVisible = false;
+
+  bookCards.forEach(card => {
+    const text = card.innerText.toLowerCase();
+    const matches = text.includes(searchTerm);
+
+    card.style.display = matches ? 'flex' : 'none';
+    if (matches) anyVisible = true;
+  });
+
+  noResults.style.display = anyVisible ? 'none' : 'block';
+});
