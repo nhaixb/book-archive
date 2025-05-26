@@ -39,8 +39,74 @@ nav a {
   border: 1px solid #ccc;
   border-radius: 10px;
   margin-bottom: 1em;
-  overflow: hidden;
+  align-items: center;
+  gap: 20px;
+  position: relative;
 }
+
+.book-image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.book-cover {
+  width: 120px;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.book-image-wrapper:hover .book-cover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* 말풍선 스타일 */
+.tooltiptext {
+  position: absolute;
+  top: 50%;
+  left: 785px;
+  transform: translateY(-50%);
+  width: 180px;
+  background-color: #444;
+  color: #fff;
+  text-align: center;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+  white-space: normal;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* 말풍선 꼬리 */
+.tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  transform: translateY(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent #444 transparent transparent;
+}
+
+.book-image-wrapper {
+  position: relative;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* hover 시 말풍선 나타나게 */
+.book-image-wrapper:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
 
 .book-cover {
   width: 120px;
@@ -117,6 +183,42 @@ nav a {
   font-weight: bold;
 }
 
+.music-card {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 1.2em 1.5em;
+  margin: 1em auto;
+  max-width: 600px;
+  transition: transform 0.2s;
+}
+
+.music-card:hover {
+  transform: translateY(-5px);
+}
+
+.music-card h3 a {
+  color: #0077cc;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.music-card h3 a:hover {
+  color: #005999;
+}
+
+.music-card p {
+  margin: 0.5em 0;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.music-recs {
+  background-color: #f9f9fc;
+  padding: 2em;
+  border-radius: 20px;
+}
+
 .filter-buttons {
   margin: 1em 0;
   display: flex;
@@ -136,3 +238,29 @@ nav a {
 .filter-buttons button:hover {
   background-color: #ddd;
 }
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 1.5em;
+  justify-content: center;
+}
+
+.filter-button {
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  font-weight: bold;
+  color: #333;
+}
+
+.filter-button:hover,
+.filter-button.active {
+  background-color: #c6dce4;
+  transform: scale(1.05);
+}
+
